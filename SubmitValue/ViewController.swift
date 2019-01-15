@@ -84,9 +84,12 @@ class ViewController: UIViewController {
         // instantiateViewController의 반환값이 UIViewController타입 => ResultViewController의 프로퍼티를 정의하기 위해
         
         // 값을 전달하는 과정을 여기에 작성
-        rvc.paramEmail = self.email.text        // 이메일
+        rvc.paramEmail = self.email.text!        // 이메일
         rvc.paramUpdate = self.isUpdate.isOn    // 자동갱신 여부
         rvc.paramInterval = self.interval.value // 갱신주기
+        
+        // 화면 전환
+        self.present(rvc, animated: true)
     }
     
 }

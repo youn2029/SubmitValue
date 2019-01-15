@@ -20,6 +20,11 @@ class ResultViewController: UIViewController {
     var paramUpdate : Bool = false  // 자동갱신 여부
     var paramInterval : Double = 0  // 갱신주기
     
-    
+    // 화면이 메모리에 로드되고 난 시점에는 viewDidLoad 메소드를 호출함 -> 전달받은 값을 표시
+    override func viewDidLoad() {
+        self.resultEmail.text = paramEmail
+        self.resultUpdate.text = (paramUpdate == true ? "자동갱신" : "자동갱신 안함")
+        self.resultInterval.text = "\(Int(paramInterval))분 마다 갱신"
+    }
     
 }
