@@ -73,5 +73,21 @@ class ViewController: UIViewController {
          **/
     }
     
+    // submit 버튼 이벤트
+    @IBAction func onSubmit(_ sender: Any) {
+        
+        // vc2의 인스턴스 (ResultViewController타임으로 캐스팅)
+        guard let rvc = self.storyboard?.instantiateViewController(withIdentifier: "RVC") as? ResultViewController else {
+            return
+        }
+        
+        // instantiateViewController의 반환값이 UIViewController타입 => ResultViewController의 프로퍼티를 정의하기 위해
+        
+        // 값을 전달하는 과정을 여기에 작성
+        rvc.paramEmail = self.email.text        // 이메일
+        rvc.paramUpdate = self.isUpdate.isOn    // 자동갱신 여부
+        rvc.paramInterval = self.interval.value // 갱신주기
+    }
+    
 }
 
