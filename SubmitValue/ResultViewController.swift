@@ -27,4 +27,9 @@ class ResultViewController: UIViewController {
         self.resultInterval.text = "\(Int(paramInterval))분 마다 갱신"
     }
     
+    // 뒤로가기 버튼 이벤트
+    @IBAction func onBack(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
 }
