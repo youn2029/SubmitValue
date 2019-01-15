@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         // instantiateViewController의 반환값이 UIViewController타입 => ResultViewController의 프로퍼티를 정의하기 위해
         
         // 값을 전달하는 과정을 여기에 작성
-        rvc.paramEmail = self.email.text!        // 이메일
+        rvc.paramEmail = self.email.text!       // 이메일
         rvc.paramUpdate = self.isUpdate.isOn    // 자동갱신 여부
         rvc.paramInterval = self.interval.value // 갱신주기
         
@@ -93,5 +93,31 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(rvc, animated: true)   // 내비게이션 컨트롤러
     }
     
+    // Maunal Segue
+    @IBAction func onPerformSegue(_ sender: Any) {
+        self.performSegue(withIdentifier: "MaunalSubmit", sender: self)
+    }
+    
+    // 세그웨이를 이용
+    // 값을 전달하는 과정을 perpare(for:sender:) 메소드를 이용
+    // 값을 전달하기 위한 뷰 컨트롤러의 인스턴스는 segue 매개변수에서 얻어옴
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 목적지 뷰 컨트롤러 인스턴스 읽어오기
+        let dest = segue.destination
+        
+        // UIViewController의 인스턴스롤 ResultViewController 타입으로 캐스팅
+        guard let rvc = dest as? ResultViewController else {
+            return
+        }
+        
+        // 값을 전달하는 과정을 여기에 작성
+        rvc.paramEmail = self.email.text!       // 이메일
+        rvc.paramUpdate = self.isUpdate.isOn    // 자동갱신 여부
+        rvc.paramInterval = self.interval.value // 갱신주기
+        
+        
+    }
 }
 
