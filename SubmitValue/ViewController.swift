@@ -89,7 +89,8 @@ class ViewController: UIViewController {
         rvc.paramInterval = self.interval.value // 갱신주기
         
         // 화면 전환
-        self.present(rvc, animated: true)
+        //self.present(rvc, animated: true) // 뷰 컨트롤러
+        navigationController?.pushViewController(rvc, animated: true)   // 내비게이션 컨트롤러
     }
     
 }
